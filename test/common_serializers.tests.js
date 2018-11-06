@@ -1,6 +1,6 @@
 var serializers = require('../serializers');
 var assert = require('chai').assert;
-var _ = require('lodash');
+var assignIn = require('lodash.assignIn');
 
 describe('serializers', function () {
   it('should work', function () {
@@ -19,7 +19,7 @@ describe('serializers', function () {
   });
 
   it('can be extended', function () {
-    var my_serializers = _.extend({}, serializers, {
+    var my_serializers = assignIn({}, serializers, {
       req: function (req) {
         var result = serializers.req(req);
         result.extended = true;
